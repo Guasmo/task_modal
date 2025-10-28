@@ -1,0 +1,142 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <!-- Selector de Login/Register -->
+  <ion-segment 
+    [(ngModel)]="selectedSegment" 
+    (ionChange)="segmentChanged($event)"
+    class="segment-custom"
+  >
+    <ion-segment-button value="login">
+      <ion-label>Iniciar Sesión</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="register">
+      <ion-label>Registrarse</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Card Container -->
+  <div class="card-container">
+    
+    <!-- LOGIN FORM -->
+    <ion-card *ngIf="selectedSegment === 'login'" class="auth-card">
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">
+          Iniciar Sesión
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-input
+          [(ngModel)]="loginUser"
+          type="text"
+          fill="outline"
+          label="Usuario"
+          labelPlacement="floating"
+          placeholder="Ingresa tu usuario"
+          class="custom-input"
+        ></ion-input>
+
+        <ion-input
+          [(ngModel)]="loginPassword"
+          type="password"
+          fill="outline"
+          label="Contraseña"
+          labelPlacement="floating"
+          placeholder="Ingresa tu contraseña"
+          class="custom-input"
+        ></ion-input>
+
+        <ion-button 
+          expand="block" 
+          (click)="handleLogin()"
+          class="submit-button"
+          color="primary"
+        >
+          Iniciar Sesión
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- REGISTER FORM -->
+    <ion-card *ngIf="selectedSegment === 'register'" class="auth-card">
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">
+          Crear Cuenta
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-input
+          [(ngModel)]="registerUser"
+          type="text"
+          fill="outline"
+          label="Usuario"
+          labelPlacement="floating"
+          placeholder="Elige un nombre de usuario"
+          class="custom-input"
+        ></ion-input>
+
+        <ion-input
+          [(ngModel)]="registerPassword"
+          type="password"
+          fill="outline"
+          label="Contraseña"
+          labelPlacement="floating"
+          placeholder="Crea una contraseña"
+          class="custom-input"
+        ></ion-input>
+
+        <ion-button 
+          expand="block" 
+          (click)="handleRegister()"
+          class="submit-button"
+          color="primary"
+        >
+          Registrarse
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+  <!-- ALERTS DE REGISTRO -->
+  <!-- Alert de Éxito (Register) -->
+  <app-reusable-alert
+    [isOpen]="showSuccessAlert"
+    [header]="alertHeader"
+    [message]="alertMessage"
+    [buttons]="['OK']"
+    [cssClass]="alertCssClass"
+    (didDismiss)="onSuccessAlertDismiss()"
+  ></app-reusable-alert>
+
+  <!-- Alert de Error (Register) -->
+  <app-reusable-alert
+    [isOpen]="showErrorAlert"
+    [header]="alertHeader"
+    [message]="alertMessage"
+    [buttons]="['OK']"
+    [cssClass]="alertCssClass"
+  ></app-reusable-alert>
+
+  <!-- ALERTS DE LOGIN -->
+  <!-- Alert de Éxito (Login) -->
+  <app-reusable-alert
+    [isOpen]="showLoginSuccessAlert"
+    [header]="alertHeader"
+    [message]="alertMessage"
+    [buttons]="['OK']"
+    [cssClass]="alertCssClass"
+  ></app-reusable-alert>
+
+  <!-- Alert de Error (Login) -->
+  <app-reusable-alert
+    [isOpen]="showLoginErrorAlert"
+    [header]="alertHeader"
+    [message]="alertMessage"
+    [buttons]="['OK']"
+    [cssClass]="alertCssClass"
+  ></app-reusable-alert>
+
+</ion-content>

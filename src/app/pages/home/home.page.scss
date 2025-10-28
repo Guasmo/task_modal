@@ -1,0 +1,86 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+  padding: 20px;
+}
+
+.auth-card {
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+}
+
+ion-card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.hint-text {
+  text-align: center;
+  color: var(--ion-color-medium);
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: var(--ion-color-light);
+  border-radius: 8px;
+
+  code {
+    background-color: var(--ion-color-medium-tint);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+}
+
+.custom-input {
+  margin-bottom: 20px;
+}
+
+.submit-button {
+  margin-top: 20px;
+  font-weight: bold;
+  height: 50px;
+}
+
+.segment-custom {
+  margin-bottom: 30px;
+}
+
+// Estilos para los alerts
+:host ::ng-deep {
+  .alert-success {
+    --backdrop-opacity: 0.6;
+    
+    .alert-wrapper {
+      .alert-head {
+        h2 {
+          color: var(--ion-color-success);
+        }
+      }
+      
+      .alert-message {
+        color: var(--ion-color-dark);
+      }
+    }
+  }
+
+  .alert-error {
+    --backdrop-opacity: 0.6;
+    
+    .alert-wrapper {
+      .alert-head {
+        h2 {
+          color: var(--ion-color-danger);
+        }
+      }
+      
+      .alert-message {
+        color: var(--ion-color-dark);
+      }
+    }
+  }
+}
